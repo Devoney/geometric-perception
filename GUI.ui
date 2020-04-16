@@ -1,0 +1,323 @@
+<?xml version='1.0' encoding='utf-8'?>
+<interface>
+  <object class="tk.Toplevel" id="tlMain">
+    <property name="padx">10</property>
+    <property name="pady">10</property>
+    <property name="title" translatable="yes">Data Capture Control</property>
+    <child>
+      <object class="ttk.Frame" id="frmMain">
+        <property name="relief">flat</property>
+        <layout>
+          <property name="column">0</property>
+          <property name="propagate">True</property>
+          <property name="row">0</property>
+          <property name="sticky">nw</property>
+        </layout>
+        <child>
+          <object class="ttk.Frame" id="frmColumnRight">
+            <property name="height">200</property>
+            <property name="width">200</property>
+            <layout>
+              <property name="column">1</property>
+              <property name="propagate">True</property>
+              <property name="row">0</property>
+              <property name="sticky">new</property>
+            </layout>
+            <child>
+              <object class="ttk.Labelframe" id="lbfCapture">
+                <property name="height">200</property>
+                <property name="text" translatable="yes">Capture:</property>
+                <property name="width">200</property>
+                <layout>
+                  <property name="column">1</property>
+                  <property name="padx">5</property>
+                  <property name="pady">5</property>
+                  <property name="propagate">True</property>
+                  <property name="row">0</property>
+                  <property name="sticky">new</property>
+                </layout>
+                <child>
+                  <object class="ttk.Label" id="lblSubject">
+                    <property name="text" translatable="yes">Subject:</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="propagate">True</property>
+                      <property name="row">16</property>
+                      <property name="sticky">w</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Entry" id="tbxSubject">
+                    <property name="text" translatable="yes">capture</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="propagate">True</property>
+                      <property name="row">17</property>
+                      <property name="sticky">ew</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Button" id="btnCapture">
+                    <property name="command">on_capture_click</property>
+                    <property name="text" translatable="yes">Capture</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="propagate">True</property>
+                      <property name="row">18</property>
+                      <property name="sticky">ew</property>
+                    </layout>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Labelframe" id="lbfPredict">
+                <property name="height">200</property>
+                <property name="text" translatable="yes">Prediction:</property>
+                <property name="width">200</property>
+                <layout>
+                  <property name="column">1</property>
+                  <property name="padx">5</property>
+                  <property name="pady">5</property>
+                  <property name="propagate">True</property>
+                  <property name="row">1</property>
+                  <property name="sticky">new</property>
+                </layout>
+                <child>
+                  <object class="ttk.Label" id="lblAreaSizeCutOff">
+                    <property name="text" translatable="yes">Area size cut-off:</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="propagate">True</property>
+                      <property name="row">0</property>
+                      <property name="sticky">ew</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Scale" id="sclAreaSizeCutOff">
+                    <property name="command">on_areaSizeCutOff_changed</property>
+                    <property name="from_">50</property>
+                    <property name="length">200</property>
+                    <property name="orient">horizontal</property>
+                    <property name="to">600</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="propagate">True</property>
+                      <property name="row">1</property>
+                      <property name="sticky">ew</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Checkbutton" id="chkPredict">
+                    <property name="command">on_predict_toggle</property>
+                    <property name="text" translatable="yes">Classify objects</property>
+                    <property name="variable">boolean:predict</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="propagate">True</property>
+                      <property name="row">2</property>
+                      <property name="sticky">w</property>
+                    </layout>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Frame" id="frmColumnLeft">
+            <property name="height">200</property>
+            <property name="width">200</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">0</property>
+              <property name="sticky">new</property>
+            </layout>
+            <child>
+              <object class="ttk.Labelframe" id="lbfImageOperations">
+                <property name="height">200</property>
+                <property name="text" translatable="yes">Image operations:</property>
+                <property name="width">200</property>
+                <layout>
+                  <property name="column">0</property>
+                  <property name="padx">5</property>
+                  <property name="pady">5</property>
+                  <property name="propagate">True</property>
+                  <property name="row">0</property>
+                  <property name="sticky">ew</property>
+                  <rows>
+                    <row id="0">
+                      <property name="pad">0</property>
+                    </row>
+                  </rows>
+                </layout>
+                <child>
+                  <object class="ttk.Checkbutton" id="chkCrop">
+                    <property name="command">on_crop_toggle</property>
+                    <property name="takefocus">false</property>
+                    <property name="text" translatable="yes">Crop</property>
+                    <property name="variable">boolean:crop</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="propagate">True</property>
+                      <property name="row">0</property>
+                      <property name="sticky">nw</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Checkbutton" id="chkMedialFilter">
+                    <property name="command">on_medianFilter_toggle</property>
+                    <property name="text" translatable="yes">Apply median filter</property>
+                    <property name="variable">boolean:medianFilter</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="propagate">True</property>
+                      <property name="row">1</property>
+                      <property name="sticky">nw</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Entry" id="tbxMedialFilterKernelSize">
+                    <property name="text" translatable="yes">7</property>
+                    <property name="textvariable">int:svMedianFilterKernelSize</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="propagate">True</property>
+                      <property name="row">2</property>
+                      <property name="sticky">ew</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Checkbutton" id="chkCenter">
+                    <property name="command">on_center_toggle</property>
+                    <property name="text" translatable="yes">Shift to center</property>
+                    <property name="variable">boolean:shiftToCenter</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="propagate">True</property>
+                      <property name="row">3</property>
+                      <property name="sticky">nw</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Checkbutton" id="chkRecordBackground">
+                    <property name="command">on_recordBackground_toggle</property>
+                    <property name="compound">top</property>
+                    <property name="state">normal</property>
+                    <property name="takefocus">false</property>
+                    <property name="text" translatable="yes">Record background</property>
+                    <property name="variable">boolean:recordBackground</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="propagate">True</property>
+                      <property name="row">4</property>
+                      <property name="sticky">w</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="lblAverage">
+                    <property name="text" translatable="yes">Average:</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="pady">0</property>
+                      <property name="propagate">True</property>
+                      <property name="row">5</property>
+                      <property name="sticky">w</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Scale" id="sclAverage">
+                    <property name="command">on_average_changed</property>
+                    <property name="from_">1</property>
+                    <property name="orient">horizontal</property>
+                    <property name="to">25</property>
+                    <property name="variable">string:average</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="propagate">True</property>
+                      <property name="row">6</property>
+                      <property name="sticky">ew</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Label" id="lblBackgroundMargin">
+                    <property name="text" translatable="yes">Background margin (mm):</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="propagate">True</property>
+                      <property name="row">7</property>
+                      <property name="sticky">w</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Entry" id="tbxBackgroundMargin">
+                    <property name="exportselection">true</property>
+                    <property name="text" translatable="yes">15</property>
+                    <property name="textvariable">string:svBackgroundMargin</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="propagate">True</property>
+                      <property name="row">8</property>
+                      <property name="sticky">ew</property>
+                    </layout>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="ttk.Labelframe" id="lbfDiagnostics">
+                <property name="height">200</property>
+                <property name="text" translatable="yes">Diagnostics:</property>
+                <property name="width">200</property>
+                <layout>
+                  <property name="column">0</property>
+                  <property name="padx">5</property>
+                  <property name="pady">5</property>
+                  <property name="propagate">True</property>
+                  <property name="row">1</property>
+                  <property name="sticky">new</property>
+                </layout>
+                <child>
+                  <object class="ttk.Label" id="lblHistogram">
+                    <property name="text" translatable="yes">Histogram (mm):</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="propagate">True</property>
+                      <property name="row">9</property>
+                      <property name="sticky">w</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="ttk.Combobox" id="cmbHistogram">
+                    <property name="textvariable">string:svHistogram</property>
+                    <property name="values">None Original Processed</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="propagate">True</property>
+                      <property name="row">10</property>
+                      <property name="sticky">ew</property>
+                    </layout>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>

@@ -1,0 +1,11 @@
+/Libs/IO/DataCapture/Operations/__pycache__/*.pyc
+/Libs/IO/DataCapture/__pycache__/*.pyc
+/Tests/Libs/Tensor/__pycache__/*.pyc
+/Tests/Libs/Image/__pycache__
+/Tests/Libs/__pycache__/*.pyc
+/Tests/__pycache__/*.pyc
+/Libs/Tensor/__pycache__/*.pyc
+/Libs/NeuralNetwork/__pycache__/*.pyc
+/Libs/IO/__pycache__/*.pyc
+/Libs/Image/__pycache__/*.pyc
+/Libs/__pycache__/*.pyc

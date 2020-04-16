@@ -1,0 +1,42 @@
+@startuml
+' Application overview
+entity CameraServer
+database Pipe
+CameraServer -> Pipe: Create pipe as server
+CameraClient -> Pipe: Connect to pipe as client
+CameraServer -> Pipe: Take image and put data on pipe
+CameraClient <- Pipe: Take data from pipe
+DataCapturer <- CameraClient: Gets data from the camera client
+DataCapturer -> DataCapturer: Apply filters on image
+DataCapturer -> DataCapturer: Extract objects from image
+loop For each object in image
+  DataCapturer -> NeuralNetwork: Send processed image to neural network
+  NeuralNetwork -> DataCapturer: Classify
+end
+DataCapturer -> GUI: Draw object labels
+@enduml
+
+@startuml
+' Image processing
+entity Camera
+participant ImageProcessor
+participant NeuralNetwork
+loop
+  loop For frames to average
+    Camera -> ImageProcessor: Image
+    ImageProcessor -> ImageProcessor: Crop
+    ImageProcessor -> ImageProcessor: Subtract background
+    ImageProcessor -> ImageProcessor: Median filter
+  end
+  ImageProcessor -> ImageProcessor: Determine contours
+  loop For each contour found
+    ImageProcessor -> ImageProcessor: Remove contours with area size < N
+    ImageProcessor -> ImageProcessor: Get bounding box
+    ImageProcessor -> ImageProcessor: Shift X,Y,Z to center
+    ImageProcessor -> NeuralNetwork: Classify
+    NeuralNetwork -> ImageProcessor: Label
+    ImageProcessor -> GUI: Draw label on top of bounding box coordinates
+end
+
+
+@enduml

@@ -1,0 +1,7 @@
+@startuml
+entity Camera
+Camera -> Camera: Setup pipe server
+Python -> Python: Connect to pipe server
+Camera -> Pipe: Take image and put data on pipe
+Pipe -> Python: Take data from pipe
+@enduml
