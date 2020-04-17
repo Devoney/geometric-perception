@@ -6,6 +6,8 @@ See a demonstration and explanation on how this all works on YouTube.
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=-wlFQKV2cHc
 " target="_blank"><img src="https://raw.githubusercontent.com/Devoney/geometric-perception/master/Misc/YouTubeThumbnail.PNG" alt="IMAGE ALT TEXT HERE" width="480" height="270" border="4" /></a>
 
+# But I do not have a depth cam!
+No worries. You can use a virtual depth cam using [Blender][13]. Load [VirtualDepthCam.blend][7] into Blender, and run the embedded Python script. (Blender 2.8). Instead of placing real objects in front of a real depth cam, you can place 3D models in front of a virtual depth cam in Blender, and still have it classify objects in real time. (You do need a powerful CPU to render on a decent frame rate though).
 
 # How to start
 - Clone this repository
@@ -37,7 +39,7 @@ See a demonstration and explanation on how this all works on YouTube.
 - Play around with the `lr` (learning rate) and number of `epochs` and `batch_size` if you want.
 - If you want to tweak the image generation, then have a look at the parameters given to `ImageDataGenerator` in [Training.py][12]
 
-# Classying objects
+# Classifying objects
 So after having created images, and having trained the network you can have it classify objects. This will use the Data Capture Control GUI, that was used for capturing images.
 - Run [CaptureData.py][8] and you should get the UI shown below.
 - ![Data Capture control][DataCaptureControl]
@@ -66,6 +68,7 @@ The code is not intended for production use. I spend some time to put structure 
 [10]: https://keras.io/preprocessing/image/
 [11]: https://github.com/Devoney/geometric-perception/blob/master/TrainNeuralNetwork.py
 [12]: https://github.com/Devoney/geometric-perception/blob/master/Libs/NeuralNetwork/Training.py
+[13]: http://www.blender.org
 
 [DataCaptureControl]: https://raw.githubusercontent.com/Devoney/geometric-perception/master/Misc/ControlPanel.png
 [YouTubeThumbnail]: https://raw.githubusercontent.com/Devoney/geometric-perception/master/Misc/YouTubeThumbnail.PNG
